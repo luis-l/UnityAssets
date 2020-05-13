@@ -11,9 +11,9 @@ Advanced behavior tree solution with a graphical editor
 [![Bonsai Behaviour Tree Showcase](https://i.imgur.com/Cuddqco.png)](https://www.youtube.com/watch?v=BL6TUJwAFWg)
 
 Videos:
-- [Simple Demo with Agents](https://twitter.com/i/status/865356769572384776)
-- [Nicify Tree](https://twitter.com/i/status/855851944103092224)
-- [Grid Snapping](https://twitter.com/i/status/866473174577401856)
+- [Quick showcase of multiple features](https://twitter.com/i/status/866473174577401856)
+- [Simple demo with agents](https://twitter.com/i/status/865356769572384776)
+- [Nicify tree](https://twitter.com/i/status/855851944103092224)
 - [Multi-Selection Actions](https://twitter.com/i/status/866830814234980352)
 - [Interrupts and Guards](https://twitter.com/i/status/867516094537510912)
 
