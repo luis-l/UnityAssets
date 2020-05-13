@@ -169,4 +169,15 @@ Here the semaphore guards are linked which highlight in orange, you can also see
 
 Collection of steering behaviors
 
+- Evade
+- Obstacle Avoidance
+- Flocking
+- Hide
+- Arrive
+- Seek
+- Flee
+- Path Follow
+- and More
+
+
 [![Autonomous Agents](https://i.imgur.com/ZRBYoib.png)](https://www.youtube.com/watch?v=O_10_1WDj6Y)
