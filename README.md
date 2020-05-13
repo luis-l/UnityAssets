@@ -1,6 +1,6 @@
 # Unity Assets
 
-## Bonsai Behaviour Tree 
+## Bonsai Behaviour Tree
 Advanced behavior tree solution with a graphical editor
 
 ![Bonsai Logo](http://i.imgur.com/rq9Tfja.png)
@@ -68,5 +68,102 @@ There are four main categories of nodes which you can extend from to add functio
 - Task
 
 In order to add custom functionality you can override key methods:
+
+    // Called only once when the tree is started.
+    public virtual void OnStart() { }
+
+    // The logic that the node executes.
+    public abstract Status Run();
+
+    // Called when a traversal begins on the node.
+    public virtual void OnEnter() { }
+
+    // Called when a traversal on the node ends.
+    public virtual void OnExit() { }
+
+    // The priority value of the node.
+    // Default value for all nodes is the negated pre-order index,
+    // since lower preorders are executed first (default behaviour).
+    public virtual float Priority() { }
+
+    // Called when a child caused an abort.
+    protected internal virtual void OnAbort(ConditionalAbort aborter) { }
+
+    // Call when a child finished executing
+    protected internal virtual void OnChildExit(int childIndex, Status childStatus) { }
+
+    // Called once after the entire tree is finished being copied.
+    // Should be used to setup special BehaviourNode references.
+    public virtual void OnCopy() { }
+
+Example of a simple, custom Wait task:
+
+    [NodeEditorProperties("Tasks/", "Timer")]
+    public class Wait : Task
+    {
+        private float _timer = 0f;
+
+        public float waitTime = 1f;
+
+        public override void OnEnter()
+        {
+            _timer = 0f;
+        }
+
+        public override Status Run()
+        {
+            _timer += Time.deltaTime;
+
+            if (_timer >= waitTime) {
+                return Status.Success;
+            }
+
+            return Status.Running;
+        }
+    }
+
+The trickier nodes to extend are composite nodes since they require knowing how to manipulate the "Iterator" in order to traverse nodes. The iterator can be manipulated to dictate how to traverse the tree.
+
+### Performance
+
+This is a benchmark running 5000 trees. No GC after startup. The tree in the image is the tree used for benchmark. Tested on a Intel Core i7-4790 @ 4 GHz. (Windows)
+
+![Performance Benchmark](http://i.imgur.com/hm0yHM1.png)
+
+I also ran the same benchmark on a Linux laptop. Intel i5-6200U @ 2.30 GHz. The "Time ms" was on average 4 ms.
+
+### Limitations
+
+Since I was aiming for a lightweight system, I decided not to provide complete, built-in functionality for serialization (data persistence is not available between running  game build sessions). The tree and blackboard structure is saved as an asset, but changing data values will not be persistent between game runs. For example, if you have a blackboard variable ["timer", 0.0f] and during the game run, the value goes up to say 10.0, you would need to save and load that value manually so its persistent between game saves.
+
+I might add a simple system to serialize basic variable types in the blackboard such as int, string, Vector, structs...etc, the difficult, tricky part would be saving persistent object references or very complex objects like dictionaries with objects.
+
+### Upcoming Features
+
+- Undo functionality. Any modification to the tree will be undo-able.
+- Run-time tree editing. This will allow you to (when the game/tree is running):
+  - Add and delete nodes
+  - Add children and re-parent nodes
+  - Change connections between nodes
+  - Change the child execution order
+  - Change the root
+  - Change the type of node, for example switching a Sequence to a Selector. The more complex version for this would changing a node to a Parallel node.
+  - Change node references (changing linked interrupts or guards)
+  - Plus more
+- Extendable friendly editor. I want plugin creation to be simple to implement. There would be an Editor API that allows you to add custom behavior to the editor or allow you to completely change the look of the editor.
+
+### Screenshots
+
+The IsKeyDown decorator has a lower priority abort type set, so the sub-trees to the right are highlighted since they can be aborted by the decorator.
+
+![Priority Abort](http://i.imgur.com/S7SVlja.png)
+
+Here the semaphore guards are linked which highlight in orange, you can also see the custom inspector for the guard, making it easy to link other guards together.
+
+![Guards](http://i.imgur.com/9w3f1PE.png)
+
  ## Autonomous Agents
- Collection of steering behaviors
+
+Collection of steering behaviors
+
+[![Autonomous Agents](https://i.imgur.com/ZRBYoib.png)](https://www.youtube.com/watch?v=O_10_1WDj6Y)
