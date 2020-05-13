@@ -8,7 +8,7 @@ Advanced behavior tree solution with a graphical editor
 
 ![Bonsai Logo](http://i.imgur.com/rq9Tfja.png)
 
-[Quick video showing usage of the editor](https://twitter.com/Unit_978/status/870426657781186560)
+[![Bonsai Behaviour Tree Showcase](https://i.imgur.com/Cuddqco.png)](https://www.youtube.com/watch?v=BL6TUJwAFWg)
 
 Goals of the project
 - Lightweight, robust, and fast behaviour trees.
@@ -71,7 +71,7 @@ There are four main categories of nodes which you can extend from to add functio
 - Task
 
 In order to add custom functionality you can override key methods:
-
+```csharp
     // Called only once when the tree is started.
     public virtual void OnStart() { }
 
@@ -98,9 +98,9 @@ In order to add custom functionality you can override key methods:
     // Called once after the entire tree is finished being copied.
     // Should be used to setup special BehaviourNode references.
     public virtual void OnCopy() { }
-
+```
 Example of a simple, custom Wait task:
-
+```csharp
     [NodeEditorProperties("Tasks/", "Timer")]
     public class Wait : Task
     {
@@ -124,7 +124,7 @@ Example of a simple, custom Wait task:
             return Status.Running;
         }
     }
-
+```
 The trickier nodes to extend are composite nodes since they require knowing how to manipulate the "Iterator" in order to traverse nodes. The iterator can be manipulated to dictate how to traverse the tree.
 
 ### Performance
