@@ -10,6 +10,14 @@ Advanced behavior tree solution with a graphical editor
 
 [![Bonsai Behaviour Tree Showcase](https://i.imgur.com/Cuddqco.png)](https://www.youtube.com/watch?v=BL6TUJwAFWg)
 
+Videos:
+- [Simple Demo with Agents](https://twitter.com/i/status/865356769572384776)
+- [Nicify Tree](https://twitter.com/i/status/855851944103092224)
+- [Grid Snapping](https://twitter.com/i/status/866473174577401856)
+- [Multi-Selection Actions](https://twitter.com/i/status/866830814234980352)
+- [Interrupts and Guards](https://twitter.com/i/status/867516094537510912)
+
+
 Goals of the project
 - Lightweight, robust, and fast behaviour trees.
 - Visual editor to improve the workflow when creating, running, and testing behaviour trees.
@@ -54,7 +62,7 @@ Things that cannot be currently edited in run-time are (this may change in the f
 - Attributes which can be used on a custom node class to categorize and add an icon to your custom node.
 - A custom blackboard inspector to add variables (specify key and type).
 - Custom inspector for nodes that need to reference other nodes like Interrupts and Semaphore Guards, the inspector lets you push a button to activate a linking action, in which you can click on nodes to link.
-- A simple "nicify" feature which automatically lays out the tree neatly.
+- A simple [nicify](https://twitter.com/i/status/855851944103092224) feature which automatically lays out the tree neatly.
 - Visual highlighting feedback to quickly see what nodes are being referenced by other nodes and which nodes get aborted by a conditional abort.
 - Multiple behaviour tree editors can be opened at once.
 - Viewing a running behaviour tree just requires clicking on a game object with behaviour tree component.
