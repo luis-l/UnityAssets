@@ -4,6 +4,9 @@
 2. [Autonomous Agents](#autonomous-agents)
 
 ## Bonsai Behaviour Tree
+
+**Notice:** Bonsai has been moved [here](https://github.com/luis-l/BonsaiBehaviourTree) for development.
+
 Advanced behavior tree solution with a graphical editor
 
 ![Bonsai Logo](http://i.imgur.com/rq9Tfja.png)
